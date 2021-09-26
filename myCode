@@ -6,7 +6,7 @@ NIC=$(ip -4 route ls | grep default | grep -Po '(?<=dev )(\S+)' | head -1);
 SERVER=$(wget -4qO- ipinfo.io/org | cut -d' ' -f2-);
 REGION=$(wget -4qO- ipinfo.io/region | sed -e "s/ /-/g");
 DATE=$(date +%m-%d-%Y);
-GIST="https://gist.githubusercontent.com/forphc/16f95185e2647d361c6ee07d690765af/raw/"
+GIST="https://gist.githubusercontent.com/SivaRamCode/4200343735307facf9784a27d69b1484/raw/"
 server_dir="/etc/openvpn/server"
 client_dir="/etc/openvpn/client"
 
@@ -66,7 +66,7 @@ _openvpn ()
 		rm -rf /etc/openvpn/easy-rsa/
 	fi
 	mkdir -p /etc/openvpn/easy-rsa/phc-easyrsa/
-	curl -skL "https://raw.githubusercontent.com/forphc/VPS-Autoscript/main/phc-easyrsa.zip" -o /etc/openvpn/easy-rsa/phc-easyrsa/phc-easyrsa.zip
+	curl -skL "https://raw.githubusercontent.com/SivaRamCode/VPS-Autoscript/main/phc-easyrsa.zip" -o /etc/openvpn/easy-rsa/phc-easyrsa/phc-easyrsa.zip
 	cd /etc/openvpn/easy-rsa/phc-easyrsa/
 	unzip -q phc-easyrsa.zip
 	cp pki/ca.crt pki/private/ca.key "pki/issued/server.crt" "pki/private/server.key" /etc/openvpn
@@ -163,7 +163,7 @@ _fail2ban ()
 
 _menu_scripts ()
 {
-	curl -skL 'https://raw.githubusercontent.com/forphc/VPS-Autoscript/main/menu.zip' -o /tmp/menu.zip
+	curl -skL 'https://raw.githubusercontent.com/SivaRamCode/VPS-Autoscript/main/menu.zip' -o /tmp/menu.zip
 	cp /tmp/menu.zip /usr/local/sbin/
 	cd /usr/local/sbin/
 	unzip -q menu.zip
@@ -305,4 +305,4 @@ read -n 1 -s -r -p "Press any key to end"
 # clean_up
 rm -f /tmp/apache2.sh
 rm -f /tmp/menu.zip
-rm -f vpsphc && exit
+rm -f myCode && exit
