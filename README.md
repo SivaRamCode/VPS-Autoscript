@@ -34,6 +34,20 @@ In case you get disconnected during installation, just relogin to your vps and t
 ```bash
 screen -r
 ```
+## Services ##
+Dropbear 143
+Squid 7799
+Stunnel (Dropbear:442 Openvpn-SSL:444)
+Openvpn TCP 1194
+Openvpn UDP 1196
+Webmin 10000
+Badvpn-udpgw 7300
+Apache2(for ovpn config link) 88
+
+To enable ws for gtm noload run command: startnoload
+WS+Dropbear 80
+WS+Stunnel 443
+WS+Openvpn 99 
 
 #### ***Credits***
 All credits goes to the masters of related projects
