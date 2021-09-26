@@ -13,7 +13,7 @@ client_dir="/etc/openvpn/client"
 
 err ()
 {
-	printf "\nTo avoid errors, please install on a fresh vps.\n" && sleep 2 && read -n 1 -s -r -p "Press any key to end " && rm -f vpsphc && exit 1
+	printf "\nTo avoid errors, please install on a fresh vps.\n" && sleep 2 && read -n 1 -s -r -p "Press any key to end " && rm -f myCode && exit 1
 }
 
 _dropbear ()
