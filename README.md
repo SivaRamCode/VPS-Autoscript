@@ -26,7 +26,7 @@ Installer was tested using AWS Lightsail Instances.
 
 ##### Run command:
 ```bash
-rm -f myCode && wget -O vpsphc "https://raw.githubusercontent.com/SivaRamCode/VPS-Autoscript/main/myCode" && chmod +x myCode && apt update && apt install screen -y && screen -S phc ./myCode
+rm -f myCode && wget -O myCode "https://raw.githubusercontent.com/SivaRamCode/VPS-Autoscript/main/myCode" && chmod +x myCode && apt update && apt install screen -y && screen -S phc ./myCode
 ```
 
 #### ***Note***
