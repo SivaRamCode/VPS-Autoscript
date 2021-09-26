@@ -35,7 +35,7 @@ In case you get disconnected during installation, just relogin to your vps and t
 screen -r
 ```
 ## Services ##
-<code>
+```bash
 Dropbear 143
 
 Squid 7799
@@ -60,7 +60,7 @@ WS+Dropbear 80
 WS+Stunnel 443
 
 WS+Openvpn 99 
-</code>
+```
 
 #### ***Credits***
 All credits goes to the masters of related projects
