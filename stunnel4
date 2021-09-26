@@ -1,0 +1,54 @@
+#!/bin/sh
+
+sleep 2
+
+#Requirement
+apt update
+apt upgrade -y
+
+#Install Softwares
+apt install stunnel4  -y
+
+# initializing var
+MYIP=`ifconfig eth0 | awk 'NR==2 {print $2}'`
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+cd /root
+
+# disable ipv6
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+
+# set time GMT +8
+ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
+
+sleep 2
+
+# Configure Stunnel
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -sha256 -subj '/CN=127.0.0.1/O=localhost/C=PH' -keyout /etc/stunnel/stunnel.pem -out /etc/stunnel/stunnel.pem
+cat > /etc/stunnel/stunnel.conf <<-END
+sslVersion = all
+pid = /stunnel.pid
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+client = no
+[openvpn]
+accept = 587
+connect = 127.0.0.1:443
+cert = /etc/stunnel/stunnel.pem
+END
+
+
+# set ipv4 forward
+echo 1 > /proc/sys/net/ipv4/ip_forward
+sed -i 's|#net.ipv4.ip_forward=1|net.ipv4.ip_forward=1|' /etc/sysctl.conf
+
+sleep 2
+
+echo " "
+echo "Installation has been completed!!"
+echo "BY SivaramCode"
+echo "https://github.com/SivaRamCode/MYSCRIPTS"
+
+sleep 5
+
+reboot
